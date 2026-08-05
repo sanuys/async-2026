@@ -1,6 +1,7 @@
 from time import sleep, ctime, time
 import os
 import threading
+import random
 
 # ฟังก์ชันจำลองการทำกาแฟให้ลูกค้า 1 คนแบบซิงโครนัส
 def make_coffee(customer_name):
@@ -9,7 +10,8 @@ def make_coffee(customer_name):
     thread_name = threading.current_thread().name
 
     print(f"{ctime()} | [PID: {pid}] [TID: {thread_id}] [Thread Name: {thread_name}] กำลังชงกาแฟให้ลูกค้า {customer_name}...")
-    sleep(5) # บล็อกการทำงานของ Thread นี้ไว้ 5 วินาทีเต็ม
+    random_sleep = random.uniform(3, 5)
+    sleep(random_sleep) # บล็อกการทำงานของ Thread นี้ไว้ 5 วินาทีเต็ม
     print(f"{ctime()} | [PID: {pid}] [TID: {thread_id}] [Thread Name: {thread_name}] ลูกค้า {customer_name}: ได้รับกาแฟแล้ว!")
 
 def main():
